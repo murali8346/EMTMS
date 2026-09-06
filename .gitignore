@@ -1,27 +1,129 @@
+# ============================================
 # Python
+# ============================================
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+pip-wheel-metadata/
 
-# Virtual Environment
+# ============================================
+# Virtual environments
+# ============================================
+venv/
+env/
+ENV/
+.venv/
 backend/venv/
+backend/env/
 
-# Environment variables
+# ============================================
+# Environment variables & secrets
+# ============================================
 .env
+.env.*
+!.env.example
 backend/.env
+backend/.env.*
 
-# Uploads
-backend/uploads/
+# ============================================
+# Credentials
+# ============================================
+cred
+cred/
+credentials
+secrets
+secret.*
+*.pem
+*.key
+*.p12
+*.pfx
 
-# Docker
+# ============================================
+# Uploads & user-generated content
+# ============================================
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ============================================
+# Database
+# ============================================
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+
+# ============================================
+# Logs
+# ============================================
 *.log
+logs/
+*.log.*
 
-# IDE
+# ============================================
+# Docker / Volumes
+# ============================================
+docker-compose.override.yml
+.docker-data/
+
+# ============================================
+# IDE / Editors
+# ============================================
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-workspace
+*.sublime-project
 
-# OS
+# ============================================
+# Operating System
+# ============================================
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon?
 Thumbs.db
-cred
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================
+# Temporary / Caches
+# ============================================
+*.tmp
+*.temp
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.pyo
+tmp/
+temp/
+
+# ============================================
+# Frontend dependencies and build output
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+frontend/dist/
+frontend/build/
+
+# ============================================
+# Test and coverage output
+# ============================================
+.coverage
+htmlcov/

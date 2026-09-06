@@ -5,7 +5,7 @@ services:
     restart: unless-stopped
 
     environment:
-      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
@@ -17,10 +17,15 @@ services:
       - mysql_data:/var/lib/mysql
 
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123"]
+      test:
+        [
+          "CMD-SHELL",
+          "mysqladmin ping -h localhost -uroot -p$${MYSQL_ROOT_PASSWORD} || exit 1"
+        ]
       interval: 10s
       timeout: 5s
       retries: 10
+      start_period: 20s
 
   backend:
     build:
@@ -34,6 +39,7 @@ services:
 
     environment:
       DB_HOST: mysql
+      DB_PORT: 3306
 
     depends_on:
       mysql:
